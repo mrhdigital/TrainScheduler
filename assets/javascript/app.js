@@ -1,4 +1,7 @@
 $(document).ready(function() {
+    //get the current time
+  var currentTime1 = moment([]);
+  $('#current-time').text(currentTime1.format("dddd, MMMM Do YYYY, h:mm:ss a"));
 
     // Initialize Firebase
     var config = {
@@ -16,6 +19,7 @@ $(document).ready(function() {
     var database = firebase.database();
     var nextTrain = 0;
     var tMinutesTillTrain = 0;
+    
 
     // clears form fields
     function clearForm() {
@@ -32,13 +36,14 @@ $(document).ready(function() {
         var tName = $("#tName").val().trim();
         var tDestination = $("#tDest").val().trim();
         var tStartTime = $("#tTime").val().trim();
-        var tFrequency = $("#tFreq").val().trim();
+        var tFrequency = $("#tFreq").val().trim().replace(/\s+/g, '');  
        
 
         if (tName ==="" || tDestination === "" || tStartTime === "" || tFrequency === "") {
             alert("please enter all data");
             return;
         }
+       
         
        
 
@@ -80,6 +85,10 @@ $(document).ready(function() {
 
     // called when data is added to firebase. populates the table body with all the train data.
     database.ref().on("child_added", function(snapshot) {
+        //get the current time
+  var currentTime1 = moment([]);
+  $('#current-time').text(currentTime1.format("dddd, MMMM Do YYYY, h:mm:ss a"));
+        
         // Append train info to new <tr>. (Using template strings from ES6)
         //using back ticks and then use the ${}
         $("#trainInfo").append(`
@@ -97,6 +106,9 @@ $(document).ready(function() {
 
     // removes the train infor based on the row that was clicked
     function deleteTrain() {
+        //get the current time
+  var currentTime1 = moment([]);
+  $('#current-time').text(currentTime1.format("dddd, MMMM Do YYYY, h:mm:ss a"));
         if (confirm("Are you sure you want to delete this train?")) {
             database.ref().child($(this).attr('id')).remove();
             $(this).closest('tr').remove();
@@ -105,6 +117,9 @@ $(document).ready(function() {
 
     // retrieves data for train from firebase and populates the form. removes data from firebase. 
     function editTrain() {
+        //get the current time
+  var currentTime1 = moment([]);
+  $('#current-time').text(currentTime1.format("dddd, MMMM Do YYYY, h:mm:ss a"));
 
         var row_num = $(this).parent().parent().index();
         var clickKey = $(this).attr('id');
