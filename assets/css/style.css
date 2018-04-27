@@ -1,6 +1,43 @@
 body{
     	background: url("../images/background.jpg");
    	background-size: 100%;
-       background-repeat: no-repeat;
-       color: black;
+       background-repeat: repeat;
+       
    }
+
+   .jumbotron {
+    background: url("../images/rail-cover-4.jpg");
+   
+   min-width: 100%;
+    
+}
+#jumbotron-header {
+    height: inherit;
+    /*padding-top: 50%;*/
+    font-size: 125px;
+    font-weight: bold;
+    color: rgb(212, 50, 0);
+    background-color: rgba(224, 221, 221, 0.7);
+       
+   
+    text-align: center;
+         
+    height: auto;
+    width: 100%;
+    margin: auto;
+}
+.panel-primary  {
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.7);
+   
+    height: auto;
+    width: 100%;
+    margin: 5px;
+}
+tr {
+    background-color: #ffff;
+    width: 100%
+
+
+   
+}
